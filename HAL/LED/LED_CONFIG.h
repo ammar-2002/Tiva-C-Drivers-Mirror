@@ -14,6 +14,4 @@ CREATED : October 16, 2023
 
 
 
-
-
 #endif /* HAL_LED_LED_CONFIG_H_ */

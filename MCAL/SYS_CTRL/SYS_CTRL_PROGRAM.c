@@ -1,13 +1,19 @@
 /********************************************************
-AUTHOR  : AMMAR WAEL
-MICRO   : TM4C123GH6PM (TIVA C)
-LAYER   : MCAL
-DRIVER  : SYS_CTRL_Driver
-File    : PROGRAM File
-Version : 1.0
-CREATED : September 17, 2023
-**********************************************************
-*********************************************************/
+ * AUTHOR  : AMMAR WAEL
+ * MICRO   : TM4C123GH6PM (TIVA C)
+ * LAYER   : MCAL
+ * DRIVER  : SYS_CTRL_Driver
+ * FILE    : SYS_CTRL_Program.c
+ * VERSION : 1.0
+ * CREATED : September 17, 2023
+ *
+ * DESCRIPTION:
+ * This file contains the program code for the SYS_CTRL_Driver,
+ * responsible for configuring and controlling the system clock
+ * and peripheral clocks on the TM4C123GH6PM (TIVA C) microcontroller.
+ *
+ ********************************************************
+ ********************************************************/
 
 /***************************************************************
 *************************** Includes ***************************
@@ -19,6 +25,15 @@ CREATED : September 17, 2023
 #include "SYS_CTRL_PRIVATE.h"
 #include "SYS_CTRL_CONFIG.h"
 
+/***************************************************************
+****************************** APIs ****************************
+****************************************************************/
+
+/*Func: SYS_CTRL_VoidClockInit
+ * Return: void
+ * Parameters: void
+ * documentation: Initialize the system clock according to the chosen configuration in the CONFIG file
+ * */
 void SYS_CTRL_VoidClockInit(void){
     #if RCC_SYSCLK == RCC_MOSC
         SYS_CTRL_REG->RCC.B.XTAL = 0x15;                            /*Select 16MHz source clock*/
@@ -174,6 +189,11 @@ void SYS_CTRL_VoidClockInit(void){
     #endif
 }
 
+/*Func: SYS_CTRL_VoidEnablePeripheral
+ * Return: void
+ * Parameters: PERIPHERAL_t copy_tPeripheral
+ * documentation: Function for enabling specific peripheral
+ * */
 void SYS_CTRL_VoidEnablePeripheral(PERIPHERAL_t copy_tPeripheral){
     switch(copy_tPeripheral / SYS_CTRL_RCC_PERIPHERAL_DIVIDER){
     case SYS_CTRL_GPIO_RCC_REGISTER:
@@ -182,6 +202,11 @@ void SYS_CTRL_VoidEnablePeripheral(PERIPHERAL_t copy_tPeripheral){
     }
 }
 
+/*Func: SYS_CTRL_VoidDisablePeripheral
+ * Return: void
+ * Parameters: PERIPHERAL_t copy_tPeripheral
+ * documentation: Function for disabling specific peripheral
+ * */
 void SYS_CTRL_VoidDisablePeripheral(PERIPHERAL_t copy_tPeripheral){
     switch(copy_tPeripheral / SYS_CTRL_RCC_PERIPHERAL_DIVIDER){
     case SYS_CTRL_GPIO_RCC_REGISTER:
@@ -190,6 +215,11 @@ void SYS_CTRL_VoidDisablePeripheral(PERIPHERAL_t copy_tPeripheral){
     }
 }
 
+/*Func: SYS_CTRL_VoidEnableClockForPeripheral
+ * Return: void
+ * Parameters: PERIPHERAL_CLOCK_t copy_tPeripheral
+ * documentation: Function for enable the clock to peripheral
+ * */
 void SYS_CTRL_VoidEnableClockForPeripheral(PERIPHERAL_CLOCK_t copy_tPeripheral){
     switch(copy_tPeripheral / SYS_CTRL_RCC_PERIPHERAL_DIVIDER){
     case SYS_CTRL_RCGC2_REGISTER:
@@ -198,6 +228,11 @@ void SYS_CTRL_VoidEnableClockForPeripheral(PERIPHERAL_CLOCK_t copy_tPeripheral){
     }
 }
 
+/*Func: SYS_CTRL_VoidDisableClockForPeripheral
+ * Return: void
+ * Parameters: PERIPHERAL_CLOCK_t copy_tPeripheral
+ * documentation: Function for disable the clock to peripheral
+ * */
 void SYS_CTRL_VoidDisableClockForPeripheral(PERIPHERAL_CLOCK_t copy_tPeripheral){
     switch(copy_tPeripheral / SYS_CTRL_RCC_PERIPHERAL_DIVIDER){
     case SYS_CTRL_RCGC2_REGISTER:

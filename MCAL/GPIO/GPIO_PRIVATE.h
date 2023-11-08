@@ -1,16 +1,32 @@
 /********************************************************
-AUTHOR  : AMMAR WAEL
-MICRO   : TM4C123GH6PM (TIVA C)
-LAYER   : MCAL
-DRIVER  : GPIO_Driver
-File    : PRIVATE File
-Version : 1.0
-CREATED : September 29, 2023
-**********************************************************
-*********************************************************/
+ * AUTHOR  : AMMAR WAEL
+ * MICRO   : TM4C123GH6PM (TIVA C)
+ * LAYER   : MCAL
+ * DRIVER  : GPIO_Driver
+ * FILE    : PRIVATE File
+ * VERSION : 1.0
+ * CREATED : September 29, 2023
+ *
+ * DESCRIPTION:
+ * This is the private implementation file for the GPIO driver.
+ * It contains the low-level functions and data structures used internally by the driver.
+ * Users should not modify or include this file directly in their applications.
+ *
+ ********************************************************
+ ********************************************************/
 
 #ifndef MCAL_GPIO_GPIO_PRIVATE_H_
 #define MCAL_GPIO_GPIO_PRIVATE_H_
+
+/***************************************************************
+*************************** Includes ***************************
+****************************************************************/
+
+#include "STD_TYPES.h"
+
+/***************************************************************
+********************** Type Definitions ************************
+****************************************************************/
 
 // Register No. 1
 typedef struct {
@@ -460,6 +476,10 @@ typedef struct{
     GPIO_t* AHB;
     GPIO_t* APB;
 }GPIO_BUS_t;
+
+/***************************************************************
+*************************** Defines ****************************
+****************************************************************/
 
 /*Base address of the GPIO Port with their bus*/
 #define GPIOA_AHB_BASE_ADRESS       0x40058000

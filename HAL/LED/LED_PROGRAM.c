@@ -9,6 +9,10 @@ CREATED : October 16, 2023
 **********************************************************
 *********************************************************/
 
+/***************************************************************
+*************************** Includes ***************************
+****************************************************************/
+
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "GPIO_INTERFACE.h"
@@ -17,6 +21,15 @@ CREATED : October 16, 2023
 #include "LED_PRIVATE.h"
 #include "LED_CONFIG.h"
 
+/***************************************************************
+****************************** APIs ****************************
+****************************************************************/
+
+/*Func: LED_VoidLedInit
+ * Return: void
+ * Parameters: LED_t copy_tLed
+ * documentation: Initialize the led chossen
+ * */
 void LED_VoidLedInit(LED_t copy_tLed){
     SYS_CTRL_VoidClockInit();
     SYS_CTRL_VoidEnableClockForPeripheral(GPIOF_CLOCK);
@@ -39,6 +52,11 @@ void LED_VoidLedInit(LED_t copy_tLed){
     }
 }
 
+/*Func: LED_VoidLedOn
+ * Return: void
+ * Parameters: LED_t copy_tLed
+ * documentation: Function for turn on the led choosen
+ * */
 void LED_VoidLedOn(LED_t copy_tLed){
     switch(copy_tLed){
         case LED_RED:
@@ -55,6 +73,11 @@ void LED_VoidLedOn(LED_t copy_tLed){
     }
 }
 
+/*Func: LED_VoidLedOff
+ * Return: void
+ * Parameters: LED_t copy_tLed
+ * documentation: Function for turn off the led choosen
+ * */
 void LED_VoidLedOff(LED_t copy_tLed){
     switch(copy_tLed){
         case LED_RED:
@@ -71,6 +94,11 @@ void LED_VoidLedOff(LED_t copy_tLed){
     }
 }
 
+/*Func: LED_VoidLedToggle
+ * Return: void
+ * Parameters: LED_t copy_tLed
+ * documentation: Function for toggle the led choosen
+ * */
 void LED_VoidLedToggle(LED_t copy_tLed){
     switch(copy_tLed){
         case LED_RED:

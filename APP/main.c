@@ -1,4 +1,87 @@
-#include "LCD_INTERFACE.h"
+#include "SYS_CTRL_INTERFACE.h"
+#include "GPIO_INTERFACE.h"
+#include "RTOS_INTERFACE.h"
+
+void LED_0_TOG_TASK(void);
+void LED_1_TOG_TASK(void);
+void LED_2_TOG_TASK(void);
+void LED_3_TOG_TASK(void);
+void LED_4_TOG_TASK(void);
+void LED_5_TOG_TASK(void);
+
+int main(){
+    SYS_CTRL_VoidClockInit();
+    SYS_CTRL_VoidEnablePeripheral(GPIOD);
+    SYS_CTRL_VoidEnableClockForPeripheral(GPIOD_CLOCK);
+    SYS_CTRL_VoidEnablePeripheral(GPIOF);
+    SYS_CTRL_VoidEnableClockForPeripheral(GPIOF_CLOCK);
+    SYS_CTRL_VoidEnablePeripheral(GPIOC);
+    SYS_CTRL_VoidEnableClockForPeripheral(GPIOC_CLOCK);
+    GPIO_VoidPinState(PF1, PIN_ENABLE);
+    GPIO_VoidPinDirection(PF1,OUTPUT);
+    GPIO_VoidPinState(PD0, PIN_ENABLE);
+    GPIO_VoidPinDirection(PD0,OUTPUT);
+    GPIO_VoidPinState(PD1, PIN_ENABLE);
+    GPIO_VoidPinDirection(PD1,OUTPUT);
+    GPIO_VoidPinState(PD2, PIN_ENABLE);
+    GPIO_VoidPinDirection(PD2,OUTPUT);
+    GPIO_VoidPinState(PD3, PIN_ENABLE);
+    GPIO_VoidPinDirection(PD3,OUTPUT);
+    GPIO_VoidPinState(PC7, PIN_ENABLE);
+    GPIO_VoidPinDirection(PC7,OUTPUT);
+    GPIO_VoidPinState(PC6, PIN_ENABLE);
+    GPIO_VoidPinDirection(PC6,OUTPUT);
+    RTOS_tCreateTask(LED_0_TOG_TASK,1,MINOR);
+    RTOS_tCreateTask(LED_1_TOG_TASK,2,NORMAL);
+    RTOS_tCreateTask(LED_2_TOG_TASK,3,NORMAL);
+    RTOS_tCreateTask(LED_3_TOG_TASK,4,MAJOR);
+    RTOS_tCreateTask(LED_4_TOG_TASK,5,CRITICAL);
+    RTOS_tCreateTask(LED_5_TOG_TASK,6,SHOW_STOPPER);
+    RTOS_tStartOS();
+    while(1){
+
+    }
+}
+
+void LED_0_TOG_TASK(void){
+    GPIO_VoidPinToggle(PD0);
+}
+
+void LED_1_TOG_TASK(void){
+    GPIO_VoidPinToggle(PD1);
+}
+
+void LED_2_TOG_TASK(void){
+    GPIO_VoidPinToggle(PD2);
+}
+
+void LED_3_TOG_TASK(void){
+    GPIO_VoidPinToggle(PD3);
+}
+
+void LED_4_TOG_TASK(void){
+    GPIO_VoidPinToggle(PC7);
+}
+
+void LED_5_TOG_TASK(void){
+    GPIO_VoidPinToggle(PC6);
+}
+
+/*#include "SYS_CTRL_INTERFACE.h"
+#include "NVIC_INTERFACE.h"
+
+int main(){
+    SYS_CTRL_VoidClockInit();
+    SYS_CTRL_VoidEnablePeripheral(GPIOA);
+    SYS_CTRL_VoidEnableClockForPeripheral(GPIOA_CLOCK);
+    NVIC_VoidEnableInterrupt(GPIO_PORTA_INT);
+    NVIC_VoidSetPriority(GPIO_PORTA_INT, LEVEL_2);
+    while(1){
+
+    }
+}
+*/
+/*#include "LCD_INTERFACE.h"
 #include "KEY_PAD_INTERFACE.h"
 
 #define MAX_SIZE                    16
@@ -199,3 +282,4 @@ CALCULATOR_ERROR Calculator(u8* copy_ptrEquation, f32* copy_ptrResult){
         return UN_CORRECT_EQUATION;
     }
 }
+*/

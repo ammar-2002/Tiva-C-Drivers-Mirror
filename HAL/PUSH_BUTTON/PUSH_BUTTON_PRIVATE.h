@@ -12,9 +12,15 @@ CREATED : October 16, 2023
 #ifndef HAL_PUSH_BUTTON_PUSH_BUTTON_PRIVATE_H_
 #define HAL_PUSH_BUTTON_PUSH_BUTTON_PRIVATE_H_
 
+/***************************************************************
+*************************** Defines ****************************
+****************************************************************/
+
+/************** Button Pins ******************/
 #define BUTTON_1_PIN    PF4
 #define BUTTON_2_PIN    PF0
 
+/************** Resistor options ******************/
 #define PULL_UP_RESISTOR    1
 #define PULL_DOWN_RESISTOR  2
 

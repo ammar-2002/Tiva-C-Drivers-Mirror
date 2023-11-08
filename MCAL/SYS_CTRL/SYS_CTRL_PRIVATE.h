@@ -1,16 +1,29 @@
 /********************************************************
-AUTHOR  : AMMAR WAEL
-MICRO   : TM4C123GH6PM (TIVA C)
-LAYER   : MCAL
-DRIVER  : SYS_CTRL_Driver
-File    : PRIVATE File
-Version : 1.0
-CREATED : September 17, 2023
-**********************************************************
-*********************************************************/
+ * AUTHOR  : AMMAR WAEL
+ * MICRO   : TM4C123GH6PM (TIVA C)
+ * LAYER   : MCAL
+ * DRIVER  : SYS_CTRL_Driver
+ * FILE    : SYS_CTRL_Private.c
+ * VERSION : 1.0
+ * CREATED : September 17, 2023
+ *
+ * DESCRIPTION:
+ * This file contains the private implementation details for the SYS_CTRL_Driver,
+ * responsible for configuring and controlling the system clock
+ * and peripheral clocks on the TM4C123GH6PM (TIVA C) microcontroller.
+ *
+ ********************************************************
+ ********************************************************/
+
 
 #ifndef MCAL_SYS_CTRL_SYS_CTRL_PRIVATE_H_
 #define MCAL_SYS_CTRL_SYS_CTRL_PRIVATE_H_
+
+/***************************************************************
+*************************** Includes ***************************
+****************************************************************/
+
+#include "STD_TYPES.h"
 
 /***************************************************************
 ********************** Type Definitions ************************

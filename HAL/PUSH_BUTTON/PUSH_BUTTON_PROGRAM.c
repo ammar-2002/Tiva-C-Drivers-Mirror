@@ -9,6 +9,10 @@ CREATED : October 16, 2023
 **********************************************************
 *********************************************************/
 
+/***************************************************************
+*************************** Includes ***************************
+****************************************************************/
+
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 #include "GPIO_INTERFACE.h"
@@ -17,6 +21,15 @@ CREATED : October 16, 2023
 #include "PUSH_BUTTON_PRIVATE.h"
 #include "PUSH_BUTTON_CONFIG.h"
 
+/***************************************************************
+****************************** APIs ****************************
+****************************************************************/
+
+/*Func: BUTTON_VoidButtonInit
+ * Return: void
+ * Parameters: BUTTON_t copy_tButton
+ * documentation: Used to initialize the buttons
+ * */
 void BUTTON_VoidButtonInit(BUTTON_t copy_tButton){
     SYS_CTRL_VoidClockInit();
     SYS_CTRL_VoidEnableClockForPeripheral(GPIOF_CLOCK);
@@ -54,6 +67,11 @@ void BUTTON_VoidButtonInit(BUTTON_t copy_tButton){
     }
 }
 
+/*Func: BUTTON_U8ButtonRead
+ * Return: u8 => Data returned from button if pressed or not
+ * Parameters: BUTTON_t copy_tButton
+ * documentation: Used to read the buttons
+ * */
 u8 BUTTON_U8ButtonRead(BUTTON_t copy_tButton){
     u8 value = LOW;
     switch(copy_tButton){
